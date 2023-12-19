@@ -8,11 +8,11 @@
     <style>
         body {
             background: black;
-            display: grid;
-            justify-content: center;
             text-align: center;
-            color: white; /* Color del texto */
-            font-family: Arial, sans-serif; /* Fuente del texto */
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
         h1 {
             color: greenyellow;
@@ -21,42 +21,39 @@
             color: teal;
         }
         .estrella {
-            font-size: 100px;
+            font-size: 6vw;
             animation: colores 1s infinite;
         }
         .rojo {
             color: green;
             transition: all 1.9s;
-            font-size: 60px;
+            font-size: 4vw;
         }
         .feliz-navidad {
-            font-size: 40px; /* Tamaño de fuente para el texto */
-            display: flex; /* Mostrar el texto en línea */
-            justify-content: center; /* Centrar horizontalmente */
-            align-items: center; /* Centrar verticalmente */
-            margin-top: 10px; /* Espacio entre el árbol y el texto */
+            font-size: 4vw;
+            margin-top: 5vw;
             font-family: 'Rubik Doodle Shadow';
-        }
-        .arbol-linea {
-            text-align: center;
         }
         .arbol-linea span {
             display: inline-block;
+            width: 2vw;
+            height: 2vw;
         }
         .espacio {
-            visibility: hidden; /* Para mantener el espacio vacío */
+            visibility: hidden;
         }
         .ultima-linea .espacio {
-            visibility: visible; /* Mostrar el último espacio en blanco */
+            visibility: visible;
         }
         .espacio,
         .rojo {
-            animation: colores 1s infinite; /* Aplicar la misma animación */
+            animation: colores 1s infinite;
         }
         .animacion-letras span {
-            animation: colores-letras 3s infinite; /* Animación para letras */
             display: inline-block;
-            margin: 0 2px;
+            margin: 0 1vw;
+            font-size: 4vw;
+            animation: colores-letras 3s infinite;
         }
         @keyframes colores {
             15% { color: red; }
@@ -78,6 +75,27 @@
             src: url(fuentes/RubikDoodleShadow-Regular.ttf);
             font-weight: bold;
             font-style: bold;
+        }
+        /* Media Queries para dispositivos móviles */
+        @media screen and (max-width: 600px) {
+            .estrella {
+                font-size: 12vw;
+            }
+            .rojo {
+                font-size: 8vw;
+            }
+            .feliz-navidad {
+                font-size: 8vw;
+                margin-top: 10vw;
+            }
+            .arbol-linea span {
+                width: 4vw;
+                height: 4vw;
+            }
+            .animacion-letras span {
+                font-size: 8vw;
+                margin: 0 2vw;
+            }
         }
     </style>
 </head>
