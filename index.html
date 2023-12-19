@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="icono.png"/>
+    <title>NAVIDAD</title>
+    <style>
+        body {
+            background: black;
+            display: grid;
+            justify-content: center;
+            text-align: center;
+            color: white; /* Color del texto */
+            font-family: Arial, sans-serif; /* Fuente del texto */
+        }
+        h1 {
+            color: greenyellow;
+        }
+        p {
+            color: teal;
+        }
+        .estrella {
+            font-size: 100px;
+            animation: colores 1s infinite;
+        }
+        .rojo {
+            color: green;
+            transition: all 1.9s;
+            font-size: 60px;
+        }
+        .feliz-navidad {
+            font-size: 40px; /* Tamaño de fuente para el texto */
+            display: flex; /* Mostrar el texto en línea */
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+            margin-top: 10px; /* Espacio entre el árbol y el texto */
+            font-family: 'Rubik Doodle Shadow';
+        }
+        .arbol-linea {
+            text-align: center;
+        }
+        .arbol-linea span {
+            display: inline-block;
+        }
+        .espacio {
+            visibility: hidden; /* Para mantener el espacio vacío */
+        }
+        .ultima-linea .espacio {
+            visibility: visible; /* Mostrar el último espacio en blanco */
+        }
+        .espacio,
+        .rojo {
+            animation: colores 1s infinite; /* Aplicar la misma animación */
+        }
+        .animacion-letras span {
+            animation: colores-letras 3s infinite; /* Animación para letras */
+            display: inline-block;
+            margin: 0 2px;
+        }
+        @keyframes colores {
+            15% { color: red; }
+            16% { color: blue; }
+            18% { color: yellow; }
+            19% { color: white; }
+            20% { color: purple; }
+            21% { color: aqua; }
+        }
+        @keyframes colores-letras {
+            0% { color: #ff0000; }
+            25% { color: #ff6600; }
+            50% { color: #ffff00; }
+            75% { color: #00ff00; }
+            100% { color: #00ffff; }
+        }
+        @font-face{
+            font-family: 'Rubik Doodle Shadow';
+            src: url(/fuentes/RubikDoodleShadow-Regular.ttf);
+            font-weight: bold;
+            font-style: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="estrella">*</div>
+    <div id="arbol" class="arbol-linea"></div>
+    <div class="feliz-navidad animacion-letras">
+        <span>F</span><span>e</span><span>l</span><span>i</span><span>z</span>
+        <span>&nbsp;</span><span>N</span><span>a</span><span>v</span><span>i</span><span>d</span>
+        <span>a</span><span>d</span><span>&nbsp;</span><span>C</span><span>a</span><span>r</span><span>i</span><span>t</span><span>o</span>
+    </div>
+    <div class="feliz-navidad animacion-letras">
+        <span>T</span><span>E</span><span>&nbsp;</span><span>A</span><span>M</span>
+        <span>O</span>
+    </div>
+    <script>
+        var hojas = "";
+        [10, 2].forEach(row => {
+            for (let i = 0; i < row; i++) {
+                hojas += "<div class='arbol-linea'>";
+                for (let j = 0; j < 9 - i; j++) {
+                    hojas += "<span class='espacio'></span>";
+                }
+                for (let k = 0; k < 1 + i * 2; k++) {
+                    hojas += "<span class='rojo'>*</span>";
+                }
+                for (let j = 0; j < 9 - i; j++) {
+                    hojas += "<span class='espacio'></span>";
+                }
+                hojas += "</div>";
+            }
+        });
+        hojas = hojas.replace(/<div class='arbol-linea'>(.*?)<\/div>/g, "<div class='arbol-linea'>$1<span class='espacio'></span></div>");
+        document.getElementById("arbol").innerHTML = hojas;
+
+        let animacion = document.querySelectorAll(".rojo");
+        function animar() {
+            for (let i = 0; i < animacion.length; i++) {
+                let tiempo = i / 20 + 1;
+                animacion[i].style.animation = "colores " + tiempo + "s infinite";
+            }
+        }
+        window.addEventListener('load', animar);
+    </script>
+</body>
+</html>
